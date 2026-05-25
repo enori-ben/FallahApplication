@@ -133,7 +133,7 @@ Coming Soon...
 
 # 👨‍💻 Developer
 
-**Enori BenAttous**
+**NourEddine BenAttous**
 
 GitHub: https://github.com/enori-ben
 
