@@ -79,20 +79,17 @@ class HomeViewModel @Inject constructor(
     }
 
     fun reset() { defaultCategoriesAdded = false; loadCategories() }
-    // تنظيف الأقسام المكررة
     fun cleanupDuplicateCategories() {
         viewModelScope.launch {
             val allCategories = repository.getAllCategories().first()
             val uniqueCategories = allCategories.distinctBy { it.name }
 
             if (allCategories.size != uniqueCategories.size) {
-                // حذف الأقسام المكررة
                 val toDelete = allCategories.filter { category ->
                     uniqueCategories.count { it.name == category.name } > 1
                 }
                 toDelete.forEach { repository.deleteCategory(it) }
 
-                // إعادة تحميل
                 loadCategories()
             }
         }

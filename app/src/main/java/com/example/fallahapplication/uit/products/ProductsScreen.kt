@@ -49,7 +49,7 @@ fun ProductsScreen(
                 title = categoryName,
                 onBack = onBack,
                 actions = {
-                    // زر السلة
+
                     IconButton(onClick = onGoToCart) {
                         BadgedBox(
                             badge = {

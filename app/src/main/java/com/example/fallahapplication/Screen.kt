@@ -20,7 +20,6 @@ sealed class Screen(val route: String) {
             if (categoryId != null) "add_product?categoryId=$categoryId" else "add_product"
     }
 
-    // ✅ مسار تعديل المنتج
     object EditProduct : Screen("edit_product/{productId}") {
         fun createRoute(productId: Long) = "edit_product/$productId"
     }

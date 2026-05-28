@@ -88,7 +88,6 @@ fun CustomersScreen(
         }
     }
 
-    // ── نافذة تأكيد الحذف ──
     deleteTarget?.let { customer ->
         AlertDialog(
             onDismissRequest = { deleteTarget = null },
@@ -121,7 +120,6 @@ fun CustomerCard(
     ) {
         Column(modifier = Modifier.padding(14.dp)) {
 
-            // الصف الأول: الاسم + زر الحذف
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,

@@ -133,7 +133,6 @@ private fun ProductFormScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
 
-            // اسم المنتج
             OutlinedTextField(
                 value = name,
                 onValueChange = { name = it },
@@ -144,7 +143,6 @@ private fun ProductFormScreen(
                 colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = FallahGreen)
             )
 
-            // الوصف
             OutlinedTextField(
                 value = description,
                 onValueChange = { description = it },
@@ -155,7 +153,6 @@ private fun ProductFormScreen(
                 colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = FallahGreen)
             )
 
-            // القسم
             ExposedDropdownMenuBox(expanded = expanded, onExpandedChange = { expanded = it }) {
                 OutlinedTextField(
                     value = categories.find { it.id == selectedCat }
@@ -178,7 +175,6 @@ private fun ProductFormScreen(
                 }
             }
 
-            // سعر الشراء + سعر البيع
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 OutlinedTextField(
                     value = buyPrice,
@@ -200,7 +196,6 @@ private fun ProductFormScreen(
                 )
             }
 
-            // عرض الربح
             if (profit != 0.0) {
                 Box(
                     modifier = Modifier.fillMaxWidth()
@@ -231,7 +226,6 @@ private fun ProductFormScreen(
                 }
             }
 
-            // الكمية + الوحدة
             Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
                 OutlinedTextField(
                     value = quantity,
@@ -252,7 +246,6 @@ private fun ProductFormScreen(
                 )
             }
 
-            // حد التنبيه
             OutlinedTextField(
                 value = minQuantity,
                 onValueChange = { minQuantity = it },

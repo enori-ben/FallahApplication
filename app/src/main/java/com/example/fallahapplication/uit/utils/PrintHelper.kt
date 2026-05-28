@@ -35,7 +35,6 @@ class PrintHelper(private val context: Context) {
             val paint = Paint()
             var y = 50f
 
-            // العنوان
             paint.textSize = 18f
             paint.isFakeBoldText = true
             canvas.drawText("🌿 محل الأمل للأدوية الفلاحية", 50f, y, paint)
@@ -48,12 +47,10 @@ class PrintHelper(private val context: Context) {
             canvas.drawText("البريد: contact@alah.com", 50f, y, paint)
             y += 30f
 
-            // خط فاصل
             paint.strokeWidth = 2f
             canvas.drawLine(50f, y, 545f, y, paint)
             y += 20f
 
-            // معلومات الفاتورة
             paint.textSize = 14f
             paint.isFakeBoldText = true
             canvas.drawText("فاتورة رقم: $invoiceNumber", 50f, y, paint)
@@ -72,11 +69,9 @@ class PrintHelper(private val context: Context) {
             }
             y += 10f
 
-            // خط فاصل
             canvas.drawLine(50f, y, 545f, y, paint)
             y += 20f
 
-            // رأس الجدول
             paint.textSize = 12f
             paint.isFakeBoldText = true
             canvas.drawText("المنتج", 50f, y, paint)
@@ -86,7 +81,6 @@ class PrintHelper(private val context: Context) {
             canvas.drawLine(50f, y, 545f, y, paint)
             y += 15f
 
-            // المنتجات (مص修正 حسب هيكل CartItem في مشروعك)
             paint.isFakeBoldText = false
             items.forEach { cartItem ->
                 val productName = cartItem.product.name
@@ -109,13 +103,11 @@ class PrintHelper(private val context: Context) {
             canvas.drawLine(50f, y, 545f, y, paint)
             y += 20f
 
-            // الإجمالي
             paint.textSize = 14f
             paint.isFakeBoldText = true
             canvas.drawText("الإجمالي: ${totalAmount.toInt().toLocaleString()} دج", 350f, y, paint)
             y += 25f
 
-            // طريقة الدفع
             when (paymentType) {
                 PaymentType.CASH -> canvas.drawText("طريقة الدفع: نقداً ✓", 350f, y, paint)
                 PaymentType.DEBT -> {
@@ -133,14 +125,12 @@ class PrintHelper(private val context: Context) {
             }
             y += 30f
 
-            // تذييل
             paint.textSize = 11f
             paint.isFakeBoldText = false
             canvas.drawText("شكراً لثقتكم 🌿 نتمنى لكم موسمًا مباركًا", 150f, y, paint)
 
             pdfDocument.finishPage(page)
 
-            // حفظ الملف
             val fileName = "invoice_$invoiceNumber.pdf"
             val documentsDir = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS)
             if (documentsDir != null && !documentsDir.exists()) {
@@ -150,7 +140,6 @@ class PrintHelper(private val context: Context) {
             pdfDocument.writeTo(FileOutputStream(file))
             pdfDocument.close()
 
-            // فتح PDF للطباعة أو المشاركة
             val uri = FileProvider.getUriForFile(
                 context,
                 "${context.packageName}.fileprovider",
@@ -165,7 +154,6 @@ class PrintHelper(private val context: Context) {
 
         } catch (e: Exception) {
             e.printStackTrace()
-            // يمكن إظهار Toast للمستخدم
         }
     }
 }

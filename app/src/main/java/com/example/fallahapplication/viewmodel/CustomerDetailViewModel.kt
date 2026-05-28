@@ -48,7 +48,6 @@ class CustomerDetailViewModel @Inject constructor(
         debtsList.sumOf { it.remainingAmount }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0.0)
 
-    // جلب الفواتير مع تفاصيل المنتجات
     val salesWithItems: StateFlow<List<SaleWithItems>> = sales.flatMapLatest { salesList ->
         flow {
             val result = mutableListOf<SaleWithItems>()
@@ -69,7 +68,6 @@ class CustomerDetailViewModel @Inject constructor(
             val id = _customerId.value
             if (id > 0) {
                 repository.recordPayment(id, amount, notes)
-                // إعادة تحميل البيانات
                 loadCustomerData(id)
             }
         }

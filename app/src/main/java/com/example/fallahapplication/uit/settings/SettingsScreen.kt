@@ -149,7 +149,6 @@ fun SettingsScreen(
         }
     }
 
-    // نافذة النسخ الاحتياطي
     if (showBackupDialog) {
         AlertDialog(
             onDismissRequest = { showBackupDialog = false },
@@ -178,7 +177,6 @@ fun SettingsScreen(
         )
     }
 
-    // نافذة تغيير اللغة
     if (showLanguageDialog) {
         AlertDialog(
             onDismissRequest = { showLanguageDialog = false },
@@ -188,7 +186,7 @@ fun SettingsScreen(
                     modifier = Modifier.fillMaxWidth(),
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // خيار العربية
+
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -219,7 +217,6 @@ fun SettingsScreen(
                         }
                     }
 
-                    // خيار English
                     Card(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -259,7 +256,6 @@ fun SettingsScreen(
         )
     }
 
-    // نافذة مسح البيانات
     if (showClearDataDialog) {
         AlertDialog(
             onDismissRequest = { showClearDataDialog = false },
@@ -284,7 +280,6 @@ fun SettingsScreen(
         )
     }
 
-    // نافذة تصدير البيانات
     if (showExportDialog) {
         AlertDialog(
             onDismissRequest = { showExportDialog = false },

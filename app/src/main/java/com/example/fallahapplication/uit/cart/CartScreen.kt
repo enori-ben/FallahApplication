@@ -42,7 +42,6 @@ fun CartScreen(
     val printHelper = remember { PrintHelper(context) }
     val uiState by viewModel.uiState.collectAsState()
 
-    // عرض صفحة النجاح بعد اكتمال البيع
     if (uiState.saleCompleted) {
         SaleSuccessScreen(
             uiState = uiState,

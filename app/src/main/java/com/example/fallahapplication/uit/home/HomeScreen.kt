@@ -47,7 +47,6 @@ fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
-    // ✅ تنظيف الأقسام المكررة عند أول تحميل للشاشة
     LaunchedEffect(Unit) {
         viewModel.cleanupDuplicateCategories()
     }
@@ -165,7 +164,6 @@ fun HomeScreen(
 
             // Categories Grid
             if (uniqueCategories.isNotEmpty()) {
-                // ✅ تصفية الأقسام لإزالة أي قسم اسمه "إرشادات الخبير" أو "expert_advice"
                 val filteredCategories = uniqueCategories.filter {
                     it.name != "إرشادات الخبير" && it.name != "expert_advice"
                 }
@@ -180,7 +178,7 @@ fun HomeScreen(
                     horizontalArrangement = Arrangement.spacedBy(14.dp),
                     userScrollEnabled = false
                 ) {
-                    // عرض الأقسام من قاعدة البيانات
+
                     items(filteredCategories) { category ->
                         CategoryCardModern(
                             icon = category.icon,
@@ -204,7 +202,6 @@ fun HomeScreen(
                         )
                     }
 
-                    // إرشادات الخبير (مرة واحدة فقط)
                     item {
                         CategoryCardModern(
                             icon = "👨‍🌾",
@@ -215,7 +212,6 @@ fun HomeScreen(
                         )
                     }
 
-                    // التقارير
                     item {
                         CategoryCardModern(
                             icon = "📊",
@@ -235,7 +231,6 @@ fun HomeScreen(
     }
 }
 
-// باقي الدوال كما هي (GreetingSection, StatsGrid, ModernStatCard, إلخ...)
 @Composable
 fun GreetingSection() {
     val currentHour = remember { java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY) }
@@ -493,7 +488,6 @@ fun CategoryCardModern(
     var isPressed by remember { mutableStateOf(false) }
     val interactionSource = remember { MutableInteractionSource() }
 
-    // تأثير تكبير بسيط عند الضغط
     val scale by animateFloatAsState(
         targetValue = if (isPressed) 0.98f else 1f,
         animationSpec = spring(
@@ -503,7 +497,7 @@ fun CategoryCardModern(
         label = "scale"
     )
 
-    // مراقبة حالة الضغط
+
     LaunchedEffect(interactionSource) {
         interactionSource.interactions.collect { interaction ->
             isPressed = when (interaction) {
@@ -543,7 +537,7 @@ fun CategoryCardModern(
                 .padding(vertical = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // أيقونة
+
             Box(
                 modifier = Modifier
                     .size(60.dp)

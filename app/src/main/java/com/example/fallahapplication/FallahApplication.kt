@@ -7,7 +7,6 @@ import dagger.hilt.android.HiltAndroidApp
 class FallahApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        // تهيئة إضافية إذا لزم الأمر
         Thread.setDefaultUncaughtExceptionHandler { thread, throwable ->
             println("Uncaught exception: ${throwable.message}")
             throwable.printStackTrace()

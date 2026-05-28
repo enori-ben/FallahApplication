@@ -30,7 +30,7 @@ import java.util.Locale
 fun ProductDetailScreen(
     productId: Long,
     onBack: () -> Unit,
-    onEdit: (Long) -> Unit,  // هذا صحيح: يأخذ Long ويرجع Unit
+    onEdit: (Long) -> Unit,
     onProductDeleted: () -> Unit = onBack,
     viewModel: ProductViewModel = hiltViewModel()
 ) {
@@ -77,7 +77,7 @@ fun ProductDetailScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // ── حالة المخزون ──
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -107,7 +107,6 @@ fun ProductDetailScreen(
                 }
             }
 
-            // ── معلومات المنتج ──
             SectionCard {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("معلومات المنتج", style = MaterialTheme.typography.titleSmall)
@@ -148,7 +147,6 @@ fun ProductDetailScreen(
                 }
             }
 
-            // ── الأسعار والربح ──
             SectionCard {
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text("الأسعار والربح", style = MaterialTheme.typography.titleSmall)
@@ -195,7 +193,6 @@ fun ProductDetailScreen(
         }
     }
 
-    // ── حوار تأكيد الحذف ──
     if (showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },

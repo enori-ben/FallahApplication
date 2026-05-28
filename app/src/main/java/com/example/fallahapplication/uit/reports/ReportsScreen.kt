@@ -29,7 +29,7 @@ import java.util.*
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ReportsScreen(
-    navController: NavController,  // ✅ إضافة navController كمعامل
+    navController: NavController,
     onBack: () -> Unit,
     viewModel: ReportViewModel = hiltViewModel()
 ) {
@@ -147,7 +147,6 @@ fun ReportsScreen(
                 }
             }
 
-            // ✅ زر الانتقال إلى التقارير المتقدمة
             item {
                 Button(
                     onClick = { navController.navigate("advanced_reports") },
@@ -216,7 +215,6 @@ fun RecentSaleItem(sale: Sale) {
     HorizontalDivider(color = Color(0xFFEEEEEE), thickness = 0.5.dp)
 }
 
-// ✅ دالة مساعدة لتنسيق الأرقام
 fun formatNumber(value: Double?): String {
     val v = value ?: 0.0
     return String.format(Locale.US, "%.0f", v).let {
@@ -237,14 +235,12 @@ fun formatNumber(value: Double): String {
     }
 }
 
-// ✅ دالة مساعدة لتنسيق الوقت مع تجنب مشكلة locale
 fun formatTime(timestamp: Long): String {
     val date = Date(timestamp)
     val formatter = SimpleDateFormat("HH:mm", Locale.US)
     return formatter.format(date)
 }
 
-// ✅ دالة مساعدة لتنسيق التاريخ
 fun formatDate(timestamp: Long): String {
     val date = Date(timestamp)
     val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.US)

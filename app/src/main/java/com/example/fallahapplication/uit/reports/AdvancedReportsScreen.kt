@@ -40,7 +40,6 @@ fun AdvancedReportsScreen(
                 .padding(12.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // ملخص
             item {
                 Card(
                     shape = RoundedCornerShape(16.dp),
@@ -94,7 +93,6 @@ fun AdvancedReportsScreen(
                 }
             }
 
-            // المنتجات الأكثر مبيعاً
             if (topProducts.isNotEmpty()) {
                 item {
                     Card(
@@ -123,7 +121,6 @@ fun AdvancedReportsScreen(
                 }
             }
 
-            // توقعات
             item {
                 Card(
                     shape = RoundedCornerShape(16.dp),
@@ -153,7 +150,6 @@ fun AdvancedReportsScreen(
                 }
             }
 
-            // نصائح ذكية
             item {
                 Card(
                     shape = RoundedCornerShape(16.dp),

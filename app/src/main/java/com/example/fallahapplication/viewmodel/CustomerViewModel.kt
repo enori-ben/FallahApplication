@@ -24,7 +24,6 @@ class CustomerViewModel @Inject constructor(
         else repository.searchCustomers(query)
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
 
-    // ✅ عدد الزبائن الكلي للإحصائيات
     val customersCount = repository.getAllCustomers()
         .map { it.size }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), 0)
@@ -38,7 +37,6 @@ class CustomerViewModel @Inject constructor(
         }
     }
 
-    // ✅ حذف الزبون
     fun deleteCustomer(customer: Customer) {
         viewModelScope.launch {
             repository.deleteCustomer(customer)

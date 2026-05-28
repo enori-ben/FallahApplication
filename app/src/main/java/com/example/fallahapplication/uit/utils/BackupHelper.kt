@@ -31,7 +31,6 @@ class BackupHelper(
 
                 val jsonObject = JSONObject()
 
-                // تصدير الأقسام
                 val categories = repository.getAllCategories().first()
                 val categoriesArray = JSONArray()
                 categories.forEach { category ->
@@ -44,7 +43,6 @@ class BackupHelper(
                 }
                 jsonObject.put("categories", categoriesArray)
 
-                // تصدير المنتجات
                 val products = repository.getAllProducts().first()
                 val productsArray = JSONArray()
                 products.forEach { product ->
@@ -61,7 +59,6 @@ class BackupHelper(
                 }
                 jsonObject.put("products", productsArray)
 
-                // تصدير الزبائن
                 val customers = repository.getAllCustomers().first()
                 val customersArray = JSONArray()
                 customers.forEach { customer ->
@@ -92,7 +89,6 @@ class BackupHelper(
                 val jsonString = FileInputStream(file).bufferedReader().use { it.readText() }
                 val jsonObject = JSONObject(jsonString)
 
-                // استيراد الأقسام
                 val categoriesArray = jsonObject.getJSONArray("categories")
                 for (i in 0 until categoriesArray.length()) {
                     val obj = categoriesArray.getJSONObject(i)
@@ -105,7 +101,6 @@ class BackupHelper(
                     repository.insertCategory(category)
                 }
 
-                // استيراد المنتجات
                 val productsArray = jsonObject.getJSONArray("products")
                 for (i in 0 until productsArray.length()) {
                     val obj = productsArray.getJSONObject(i)
@@ -122,7 +117,6 @@ class BackupHelper(
                     repository.insertProduct(product)
                 }
 
-                // استيراد الزبائن
                 val customersArray = jsonObject.getJSONArray("customers")
                 for (i in 0 until customersArray.length()) {
                     val obj = customersArray.getJSONObject(i)

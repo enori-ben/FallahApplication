@@ -106,12 +106,10 @@ fun FallahNavHost() {
             modifier         = Modifier.padding(innerPadding)
         ) {
 
-            // ── الرئيسية ──
             composable("home") {
                 HomeScreen(navController = navController)
             }
 
-            // ── السلة ──
             composable("cart") {
                 CartScreen(
                     onBack = { navController.popBackStack() },
@@ -122,7 +120,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── جميع المنتجات ──
             composable(Screen.AllProducts.route) {
                 AllProductsScreen(
                     onBack = { navController.popBackStack() },
@@ -132,7 +129,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── منتجات القسم (مرة واحدة فقط) ──
             composable(
                 route = "products/{categoryId}/{categoryName}",
                 arguments = listOf(
@@ -155,7 +151,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── تفاصيل المنتج ──
             composable(
                 route = "product/{productId}",
                 arguments = listOf(navArgument("productId") { type = NavType.LongType })
@@ -169,7 +164,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── إضافة منتج ──
             composable(
                 route = "add_product",
                 arguments = listOf(
@@ -184,7 +178,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── تعديل منتج ──
             composable(
                 route = "edit_product/{productId}",
                 arguments = listOf(navArgument("productId") { type = NavType.LongType })
@@ -197,7 +190,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── الزبائن ──
             composable(Screen.Customers.route) {
                 CustomersScreen(
                     onCustomerClick = { id -> navController.navigate(Screen.CustomerDetail.createRoute(id)) },
@@ -206,7 +198,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── تفاصيل زبون ──
             composable(
                 route = "customer/{customerId}",
                 arguments = listOf(navArgument("customerId") { type = NavType.LongType })
@@ -218,7 +209,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── إضافة زبون ──
             composable(Screen.AddCustomer.route) {
                 AddCustomerScreen(
                     onBack = { navController.popBackStack() },
@@ -226,7 +216,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── الديون ──
             composable(Screen.Debts.route) {
                 DebtsScreen(
                     onCustomerClick = { id -> navController.navigate(Screen.CustomerDetail.createRoute(id)) },
@@ -234,7 +223,6 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── التقارير ──
             composable(Screen.Reports.route) {
                 ReportsScreen(
                     navController = navController,
@@ -242,17 +230,14 @@ fun FallahNavHost() {
                 )
             }
 
-            // ── التقارير المتقدمة ──
             composable(Screen.AdvancedReports.route) {
                 AdvancedReportsScreen(onBack = { navController.popBackStack() })
             }
 
-            // ── الإعدادات ──
             composable(Screen.Settings.route) {
                 SettingsScreen(onBack = { navController.popBackStack() })
             }
 
-            // ── إرشادات الخبير ──
             composable(Screen.ExpertAdvice.route) {
                 ExpertAdviceScreen(onBack = { navController.popBackStack() })
             }
